@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malouf Personal Chef | In-Home Culinary Services · Raleigh–Durham, NC</title>
+  <meta name="description" content="Personalized in-home culinary services for discerning households in the Triangle — from weekly meal preparation to intimate private dining." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='4' fill='%231E1E1C'/><text x='32' y='48' font-family='Georgia,serif' font-size='44' font-weight='400' text-anchor='middle' fill='%23B8954A'>M</text></svg>" />
+
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #FAF8F4;
+      --linen:   #F2EDE6;
+      --charcoal:#2C2C2C;
+      --dark:    #1E1E1C;
+      --stone:   #6B6560;
+      --taupe:   #DDD8D0;
+      --gold:    #B8954A;
+      --olive:   #5A6344;
+      --white:   #FFFFFF;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-serif:   'Playfair Display', Georgia, serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+
+      --section-pad: 120px;
+      --container:   1200px;
+      --radius:      4px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-headline {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 48px);
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--stone);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .section-header .section-sub {
+      margin: 0 auto;
+    }
+
+    /* ─── BUTTONS ──────────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--olive);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); }
+
+    .text-link {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .text-link:hover { border-color: var(--gold); }
+
+    /* ─── NAVIGATION ───────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #nav.scrolled {
+      background: rgba(250, 248, 244, 0.97);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 var(--taupe);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+.nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      transition: color 0.3s;
+    }
+    #nav.scrolled .nav-logo-text { color: var(--charcoal); }
+
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      margin-left: 48px;
+    }
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    #nav.scrolled .nav-links a { color: var(--stone); }
+    #nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+
+    .nav-cta { margin-left: 24px; }
+    #nav:not(.scrolled) .nav-cta .btn-primary {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    #nav:not(.scrolled) .nav-cta .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--white);
+      transition: background 0.3s, transform 0.3s;
+    }
+    #nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay a {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--gold); }
+    .nav-mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 32px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .nav-mobile-overlay .btn-primary { margin-top: 16px; }
+
+    /* ─── MOBILE STICKY CTA ────────────────────────────────────── */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--gold);
+      color: var(--white);
+      text-align: center;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 998;
+      text-decoration: none;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.65;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,18,16,0.85) 0%, rgba(20,18,16,0.2) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 0 40px;
+      margin-left: calc((100vw - 1200px) / 2);
+    }
+
+    .hero-content .eyebrow { color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(52px, 7vw, 92px);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 1.5vw, 20px);
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    /* ─── SERVICES ─────────────────────────────────────────────── */
+    #services {
+      background: var(--cream);
+      padding: var(--section-pad) 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .service-card {
+      padding: 48px 40px;
+      border: 1px solid var(--taupe);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    }
+
+    .service-icon {
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 28px;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--charcoal);
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--stone);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    /* ─── HOW IT WORKS ─────────────────────────────────────────── */
+    #how-it-works {
+      background: var(--linen);
+      padding: var(--section-pad) 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 64px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 16.66%;
+      right: 16.66%;
+      height: 1px;
+      background: var(--taupe);
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .step h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 14px;
+      color: var(--charcoal);
+    }
+
+    .step p {
+      font-size: 15px;
+      color: var(--stone);
+      line-height: 1.8;
+    }
+
+    /* ─── MENUS ────────────────────────────────────────────────── */
+    #menus {
+      background: var(--white);
+      padding: var(--section-pad) 0;
+    }
+
+    .menus-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 64px;
+    }
+
+    .menus-image {
+      position: relative;
+    }
+
+    .menus-image img {
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .menu-list {
+      padding-top: 8px;
+    }
+
+    .menu-day {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--taupe);
+    }
+    .menu-day:last-child { border-bottom: none; }
+
+    .menu-day-label {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .menu-day-dish {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+
+    .menu-day-sides {
+      font-size: 13px;
+      color: var(--stone);
+    }
+
+    .event-menu-box {
+      background: var(--linen);
+      padding: 56px 64px;
+      margin-bottom: 48px;
+    }
+
+    .event-menu-box .eyebrow { margin-bottom: 8px; }
+
+    .event-menu-box h3 {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      color: var(--charcoal);
+    }
+
+    .event-courses {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .course-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .course-dish {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+
+    .course-desc {
+      font-size: 13px;
+      color: var(--stone);
+    }
+
+    .menu-refresh-note {
+      font-size: 13px;
+      color: var(--stone);
+      font-style: italic;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--taupe);
+      line-height: 1.7;
+    }
+
+    .menu-note {
+      font-size: 14px;
+      color: var(--stone);
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .menus-cta { text-align: center; }
+
+    /* ─── PRICING ──────────────────────────────────────────────── */
+    #pricing {
+      background: var(--cream);
+      padding: var(--section-pad) 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 72px;
+    }
+
+    .pricing-card {
+      padding: 48px 40px;
+      border: 1px solid var(--taupe);
+      background: var(--white);
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+    .pricing-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.06); }
+
+    .pricing-card.featured {
+      border: 2px solid var(--gold);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      white-space: nowrap;
+    }
+
+    .pricing-tier {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card h3 {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+
+    .pricing-subtitle {
+      font-size: 14px;
+      color: var(--stone);
+      margin-bottom: 28px;
+    }
+
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .pricing-freq {
+      font-size: 13px;
+      color: var(--stone);
+      margin-bottom: 32px;
+    }
+
+    .pricing-divider {
+      height: 1px;
+      background: var(--taupe);
+      margin-bottom: 28px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 36px;
+    }
+    .pricing-features li {
+      font-size: 14px;
+      color: var(--stone);
+      padding: 7px 0;
+      padding-left: 20px;
+      position: relative;
+      border-bottom: 1px solid rgba(221,216,208,0.5);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 12px;
+    }
+
+    .addons-section {
+      max-width: 700px;
+      margin: 0 auto 64px;
+    }
+
+    .addons-section h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--charcoal);
+    }
+
+    .addons-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .addons-table tr {
+      border-bottom: 1px solid var(--taupe);
+    }
+    .addons-table tr:first-child { border-top: 1px solid var(--taupe); }
+    .addons-table td {
+      padding: 14px 0;
+      font-size: 15px;
+    }
+    .addons-table td:last-child {
+      text-align: right;
+      color: var(--charcoal);
+      font-weight: 400;
+    }
+    .addons-table td:first-child { color: var(--stone); }
+
+    .pricing-footnote {
+      text-align: center;
+      font-size: 13px;
+      color: var(--stone);
+      font-style: italic;
+      margin-bottom: 48px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pricing-scarcity {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .pricing-cta { text-align: center; }
+
+    /* ─── ABOUT ────────────────────────────────────────────────── */
+    #about {
+      background: var(--linen);
+      padding: var(--section-pad) 0;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image img {
+      height: 680px;
+      object-fit: cover;
+      box-shadow: 20px 20px 0 var(--taupe);
+    }
+
+    .about-bio .eyebrow { margin-bottom: 12px; }
+
+    .about-bio h2 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(40px, 4vw, 56px);
+      line-height: 1.1;
+      margin-bottom: 36px;
+      color: var(--charcoal);
+    }
+
+    .about-bio p {
+      font-size: 16px;
+      color: var(--stone);
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+
+    .about-bio p:last-of-type {
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    .about-cta { margin-top: 36px; }
+
+    /* ─── TESTIMONIALS ─────────────────────────────────────────── */
+    #testimonials {
+      background: var(--dark);
+      padding: var(--section-pad) 0;
+    }
+
+    #testimonials .section-headline { color: var(--white); }
+    #testimonials .eyebrow { color: var(--gold); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 64px;
+    }
+
+    .testimonial-card { padding: 8px 0; }
+
+    .testimonial-quote-mark {
+      font-family: var(--font-display);
+      font-size: 96px;
+      line-height: 0.7;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    .testimonial-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-author {
+      font-size: 13px;
+      color: var(--stone);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-descriptor {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-top: 5px;
+    }
+
+    /* ─── FAQ ──────────────────────────────────────────────────── */
+    #faq {
+      background: var(--cream);
+      padding: var(--section-pad) 0;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--taupe);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--charcoal);
+      gap: 24px;
+      user-select: none;
+      list-style: none;
+    }
+
+    .faq-question::-webkit-details-marker { display: none; }
+
+    .faq-toggle {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--taupe);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--gold);
+      transition: transform 0.3s;
+    }
+
+    details[open] .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 0 24px 0;
+      font-size: 15px;
+      color: var(--stone);
+      line-height: 1.85;
+    }
+
+    /* ─── CONTACT ──────────────────────────────────────────────── */
+    #contact {
+      background: var(--white);
+      padding: var(--section-pad) 0;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .eyebrow { margin-bottom: 12px; }
+
+    .contact-info h2 {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--charcoal);
+    }
+
+    .contact-info > p {
+      font-size: 16px;
+      color: var(--stone);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-expect h4 {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .contact-expect ul {
+      list-style: none;
+    }
+    .contact-expect li {
+      font-size: 14px;
+      color: var(--stone);
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .contact-expect li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .contact-details {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--taupe);
+    }
+    .contact-details p {
+      font-size: 14px;
+      color: var(--stone);
+      margin-bottom: 6px;
+    }
+    .contact-details a { color: var(--gold); }
+    .contact-details a:hover { text-decoration: underline; }
+
+    /* FORM */
+    .contact-form {
+      background: var(--cream);
+      padding: 56px 48px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid var(--taupe);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6560' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+    }
+
+    textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit { width: 100%; margin-top: 8px; padding: 18px; font-size: 13px; }
+
+    .form-privacy {
+      font-size: 12px;
+      color: var(--stone);
+      text-align: center;
+      margin-top: 14px;
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    #footer {
+      background: var(--charcoal);
+      padding: 72px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .footer-tagline {
+      font-size: 13px;
+      color: var(--stone);
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-social {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-social a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 12px;
+      color: var(--stone);
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .hero-content { margin-left: 40px; }
+      .menus-layout, .about-layout { gap: 48px; }
+    }
+
+    @media (max-width: 900px) {
+      :root { --section-pad: 80px; }
+
+      .services-grid,
+      .steps-grid,
+      .pricing-grid,
+      .testimonials-grid,
+      .event-courses { grid-template-columns: 1fr; gap: 24px; }
+
+      .steps-grid::before { display: none; }
+
+      .menus-layout,
+      .about-layout,
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+
+      .menus-image img,
+      .about-image img { height: 400px; }
+      .about-image { box-shadow: none; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+      .event-menu-box { padding: 40px 32px; }
+      .contact-form { padding: 40px 32px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+
+      #nav { height: 60px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .mobile-sticky-cta { display: block; }
+      #contact { padding-bottom: calc(var(--section-pad) + 56px); }
+
+      .hero-content {
+        margin-left: 0;
+        padding: 0 24px;
+        text-align: center;
+      }
+      .hero-ctas { justify-content: center; flex-wrap: wrap; }
+
+      .hero-bg {
+        background-position: 60% center;
+      }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-brand-logo { font-size: 20px; }
+
+      .event-menu-box { padding: 32px 24px; }
+      .contact-form { padding: 32px 24px; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+<!-- ─── MOBILE OVERLAY ──────────────────────────────────── -->
+<div class="nav-mobile-overlay" id="mobileMenu">
+  <button class="nav-mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">×</button>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+  <a href="#menus" onclick="closeMobileMenu()">Menus</a>
+  <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="#contact" class="btn-primary" onclick="closeMobileMenu()">Check Availability</a>
+</div>
+
+<!-- ─── NAVIGATION ──────────────────────────────────────── -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <svg class="nav-logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="48" height="48" rx="3" fill="#B8954A" fill-opacity="0.15"/>
+          <text x="24" y="36" font-family="Georgia,serif" font-size="30" font-weight="400" text-anchor="middle" fill="#B8954A">M</text>
+        </svg>
+        <span class="nav-logo-text">Malouf Personal Chef</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#menus">Menus</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn-primary nav-cta">Check Availability</a>
+      <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── MOBILE STICKY CTA ───────────────────────────────── -->
+<a href="#contact" class="mobile-sticky-cta">Check Availability</a>
+
+<!-- ─── HERO ────────────────────────────────────────────── -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Private Chef Services &nbsp;·&nbsp; Raleigh–Durham, NC</span>
+    <h1 class="hero-headline">Private Chef Services,<br>Designed Around Your Life.</h1>
+    <p class="hero-sub">Personalized in-home culinary services for discerning households in the Triangle — from weekly meal preparation to intimate private dining.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Inquire Now</a>
+      <a href="#services" class="btn-ghost">Explore Services ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ────────────────────────────────────────── -->
+<section id="services" aria-label="Services">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">What We Offer</span>
+      <h2 class="section-headline">Culinary Care, Tailored to You</h2>
+      <p class="section-sub">From weeknight meal prep to a curated dinner party for eight, every service is designed around how you live — not a one-size-fits-all template.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal reveal-delay-1">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="13" y1="8" x2="13" y2="32" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M10 8 Q10 18 13 20 Q16 18 16 8" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="27" y1="8" x2="27" y2="32" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M27 8 C27 8 30 11 30 16 C30 19 28.5 20.5 27 21" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Weekly Meal Preparation</h3>
+        <p>Arrive home to a full week's worth of meals — freshly prepared, portioned, and ready to enjoy. Chef Malouf handles every detail: menu planning, ingredient sourcing, cooking, and kitchen clean-up. You simply open the refrigerator.</p>
+        <a href="#contact" class="text-link">Start Your Service →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 8c0 0-3 3-3 6a3 3 0 006 0c0-3-3-6-3-6z" stroke="#B8954A" stroke-width="1.4" stroke-linejoin="round"/>
+          <line x1="20" y1="17" x2="20" y2="34" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="14" y1="34" x2="26" y2="34" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Private Dining</h3>
+        <p>Transform your dining room into the evening's most exclusive table. Whether it's an intimate dinner for two or a curated gathering for close friends, Chef Malouf designs a multi-course experience around your vision — handled entirely, from concept to clean-up.</p>
+        <a href="#contact" class="text-link">Plan Your Dinner →</a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 32c0-10 8-16 8-16s-2 10-8 14" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 32c0-8-8-14-8-14s4 10 8 14" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="20" y1="20" x2="20" y2="34" stroke="#B8954A" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Wellness Meal Plans</h3>
+        <p>Performance, balance, or intentional weight management — whatever your health objective, every plate is built to support it. Meals are chef-crafted, never compromise on flavor, and aligned with your specific nutritional framework.</p>
+        <a href="#contact" class="text-link">Start Your Plan →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─────────────────────────────────────── -->
+<section id="how-it-works" aria-label="How It Works">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The Process</span>
+      <h2 class="section-headline">Simple from Start to Table</h2>
+      <p class="section-sub">A seamless, low-friction experience from first inquiry to your first meal.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal reveal-delay-1">
+        <span class="step-number">01</span>
+        <h3>Consultation</h3>
+        <p>We begin with a brief conversation about your household, preferences, dietary requirements, and goals. No obligation — just a chance to understand what you need.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <span class="step-number">02</span>
+        <h3>Custom Menu Design</h3>
+        <p>Chef Malouf crafts a personalized menu for your approval. Every dish is chosen for your palate, sourced for quality, and planned around the week ahead.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <span class="step-number">03</span>
+        <h3>Preparation & Delivery</h3>
+        <p>On your scheduled day, Chef Malouf arrives, prepares everything fresh in your kitchen, and leaves it ready to enjoy — kitchen clean-up included. All you do is eat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MENUS ────────────────────────────────────────────── -->
+<section id="menus" aria-label="Sample Menus">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The Food</span>
+      <h2 class="section-headline">Refined, Seasonal, and Genuinely Delicious</h2>
+      <p class="section-sub">Chef Malouf's cooking draws on American and Mediterranean foundations, elevated through classical technique and a preference for fresh, responsibly sourced ingredients.</p>
+    </div>
+
+    <div class="menus-layout">
+      <div class="menus-image">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Beautifully plated seasonal cuisine" />
+      </div>
+      <div class="menu-list">
+        <div class="menu-day">
+          <span class="menu-day-label">Monday</span>
+          <p class="menu-day-dish">Pan-Seared Cod · Lemon Butter Sauce</p>
+          <p class="menu-day-sides">Herb Rice Pilaf · Roasted Brussels Sprouts</p>
+        </div>
+        <div class="menu-day">
+          <span class="menu-day-label">Tuesday</span>
+          <p class="menu-day-dish">Chicken Tinga Tacos · Mango Salsa</p>
+          <p class="menu-day-sides">Cuban Black Beans · Mixed Greens</p>
+        </div>
+        <div class="menu-day">
+          <span class="menu-day-label">Wednesday</span>
+          <p class="menu-day-dish">Grilled Filet Mignon</p>
+          <p class="menu-day-sides">Garlic Chive Mashed Potato · Roasted Parmesan Asparagus</p>
+        </div>
+        <div class="menu-day">
+          <span class="menu-day-label">Thursday</span>
+          <p class="menu-day-dish">Crab &amp; Shrimp Risotto</p>
+          <p class="menu-day-sides">Side Salad</p>
+        </div>
+        <p class="menu-refresh-note">Menus are refreshed weekly and tailored to your preferences, dietary needs, and seasonal availability.</p>
+      </div>
+    </div>
+
+    <div class="event-menu-box">
+      <span class="eyebrow">Special Event Menu</span>
+      <h3>An Evening at Your Table</h3>
+      <div class="event-courses">
+        <div>
+          <p class="course-label">First Course</p>
+          <p class="course-dish">Burrata · Prosciutto di Parma</p>
+          <p class="course-desc">Arugula · Aged Balsamic Reduction</p>
+        </div>
+        <div>
+          <p class="course-label">Second Course</p>
+          <p class="course-dish">Black Truffle Risotto</p>
+          <p class="course-desc">Lemon Butter Poached Lobster Tail</p>
+        </div>
+        <div>
+          <p class="course-label">Third Course</p>
+          <p class="course-dish">Classic Tiramisu</p>
+          <p class="course-desc">Espresso · Mascarpone</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note">All menus are built around your household. Dietary accommodations — gluten-free, dairy-free, low-carb, plant-based, and others — are standard practice, not exceptions.</p>
+    <div class="menus-cta">
+      <a href="#contact" class="text-link">Request a Custom Menu →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ──────────────────────────────────────────── -->
+<section id="pricing" aria-label="Pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Investment</span>
+      <h2 class="section-headline">Personalized Service, Clearly Priced</h2>
+      <p class="section-sub">Every package includes menu planning, in-home preparation, and kitchen clean-up. Groceries are purchased separately at cost — you are never marked up on ingredients.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card reveal reveal-delay-1">
+        <p class="pricing-tier">Meal Prep · 2 People</p>
+        <h3>The Couple</h3>
+        <p class="pricing-subtitle">Personalized prep for two</p>
+        <div class="pricing-price">$30</div>
+        <p class="pricing-freq">starting per session</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Weekly meal prep for 2 people</li>
+          <li>Customized menu planning</li>
+          <li>In-home preparation</li>
+          <li>Portioned &amp; refrigerator-ready</li>
+          <li>Kitchen clean-up included</li>
+        </ul>
+        <a href="#contact" class="text-link">Inquire Now →</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <div class="pricing-badge">Most Popular</div>
+        <p class="pricing-tier">Meal Prep · 4 Portions</p>
+        <h3>The Household</h3>
+        <p class="pricing-subtitle">The most requested package</p>
+        <div class="pricing-price">$40</div>
+        <p class="pricing-freq">starting per session</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Weekly meal prep for 4 portions</li>
+          <li>One protein, starch &amp; side per dish</li>
+          <li>Customized weekly menu</li>
+          <li>In-home preparation</li>
+          <li>Kitchen clean-up included</li>
+        </ul>
+        <a href="#contact" class="text-link">Inquire Now →</a>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-3">
+        <p class="pricing-tier">Meal Prep · 6 Portions</p>
+        <h3>The Family</h3>
+        <p class="pricing-subtitle">Built for a full household</p>
+        <div class="pricing-price">$60</div>
+        <p class="pricing-freq">starting per session</p>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Weekly meal prep for 6 portions</li>
+          <li>Fully customized weekly menu</li>
+          <li>In-home preparation</li>
+          <li>Portioned for convenience</li>
+          <li>Kitchen clean-up included</li>
+        </ul>
+        <a href="#contact" class="text-link">Inquire Now →</a>
+      </div>
+    </div>
+
+    <div class="addons-section">
+      <h3>À La Carte Add-Ons</h3>
+      <table class="addons-table" aria-label="Add-on pricing">
+        <tbody>
+          <tr><td>Custom Menu Planning</td><td>$45</td></tr>
+          <tr><td>Additional Protein</td><td>+$5</td></tr>
+          <tr><td>Additional Side Dish</td><td>+$3</td></tr>
+          <tr><td>Grocery Shopping Service</td><td>$40 flat fee</td></tr>
+          <tr><td>Private Dining &amp; Special Events</td><td>Custom quote</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pricing-footnote">Pricing reflects in-home preparation only. Grocery costs are billed separately at market rate — no markups, no surprises. Private event pricing varies by scope; please inquire directly.</p>
+    <p class="pricing-scarcity">Limited weekly availability to ensure a highly personalized experience for every client.</p>
+    <div class="pricing-cta">
+      <a href="#contact" class="btn-primary">Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────── -->
+<section id="about" aria-label="About the Chef">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-image">
+        <img src="remy.webp" alt="Remy from Ratatouille (placeholder)" style="object-position: top;" />
+      </div>
+      <div class="about-bio">
+        <span class="eyebrow">Behind the Apron</span>
+        <h2>Meet<br>Chef Malouf</h2>
+        <p>Some people cook for a living. Chef Malouf cooks because food is the most personal form of hospitality there is.</p>
+        <p>Based in the Raleigh–Durham area, Chef Malouf has built a private clientele around a simple but demanding standard: every meal should feel considered. Not just nutritious or convenient — though it will be both — but genuinely crafted for the person eating it.</p>
+        <p>With a background rooted in classical technique and a palate shaped by American, Mediterranean, and Latin influences, Chef Malouf brings restaurant-quality execution into the home kitchen without the formality, pretense, or interruption that comes with dining out.</p>
+        <p>What clients most often say isn't that the food is impressive — though it is. It's that coming home feels different. The week is handled. One less thing to think about. That's the work Chef Malouf finds most meaningful.</p>
+        <p><em>Serving Raleigh, Apex, Cary, Morrisville, Chapel Hill, Durham, and surrounding Triangle communities.</em></p>
+        <div class="about-cta">
+          <a href="#contact" class="text-link">Get in Touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+<section id="testimonials" aria-label="Client Testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Client Experiences</span>
+      <h2 class="section-headline">What Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal reveal-delay-1">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">Every meal is perfectly prepared and beautifully presented — restaurant quality, in the comfort of my own home. It's genuinely changed how I feel about coming home at the end of a long day.</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-author">TEMP</p>
+        <span class="testimonial-descriptor">Weekly Meal Prep Client</span>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">I was skeptical that a meal prep service could accommodate everything my family needs. Chef Malouf not only made it work — he made it genuinely delicious. We've been weekly clients for over a year.</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-author">TEMP</p>
+        <span class="testimonial-descriptor">Family Meal Prep Client</span>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-3">
+        <span class="testimonial-quote-mark">"</span>
+        <p class="testimonial-text">We hired Chef Malouf for a dinner party and the experience was flawless. Our guests asked where we'd ordered from — they couldn't believe it was prepared in our kitchen that evening.</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-author">TEMP</p>
+        <span class="testimonial-descriptor">Private Dining Client</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────── -->
+<section id="faq" aria-label="Frequently Asked Questions">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Common Questions</span>
+      <h2 class="section-headline">Everything You Need to Know</h2>
+    </div>
+    <div class="faq-list" role="list">
+
+      <details>
+        <summary class="faq-question">
+          What areas do you serve?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">Chef Malouf serves Raleigh, Apex, Cary, Morrisville, Chapel Hill, Durham, and surrounding Triangle communities. Reach out to confirm availability for your specific location.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          How does the grocery shopping service work?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">You have two options: provide the ingredients yourself, or add our grocery shopping service ($40 flat fee). If we shop for you, groceries are billed at market cost — there are no markups on ingredients, ever.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          Can you accommodate dietary restrictions or allergies?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">Absolutely. Accommodating dietary needs — from gluten-free and dairy-free to plant-based, low-carb, and specific allergy requirements — is a standard part of our menu planning process, not an exception.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          How far in advance do I need to book?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">For weekly meal prep, we recommend at least one week of lead time for your initial consultation and first session. Private dining and event inquiries are best made two to three weeks in advance.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          Is there a contract or minimum commitment?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">There is no long-term contract required. Most clients find a consistent weekly rhythm works best, but your schedule is flexible and can be adjusted as needed.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          What happens on prep day?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">Chef Malouf arrives at your home, prepares everything fresh in your kitchen, portions and stores all meals, and leaves the kitchen clean. You don't need to be present the entire time — most clients are home for the start and finish.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          Do you handle special events and dinner parties?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">Yes. Private dining, intimate dinner parties, and special occasion meals are available by custom quote. Reach out to discuss your vision and we'll build the experience from there.</div>
+      </details>
+
+      <details>
+        <summary class="faq-question">
+          Can my menu change week to week?
+          <span class="faq-toggle">+</span>
+        </summary>
+        <div class="faq-answer">Menus are rebuilt fresh each week based on your preferences, what's in season, and any changes to your schedule or nutritional goals. Consistency and flexibility coexist here.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section id="contact" aria-label="Contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info">
+        <span class="eyebrow">Let's Talk</span>
+        <h2>Start Your Inquiry</h2>
+        <p>Whether you're ready to book or simply exploring options, Chef Malouf personally responds to every inquiry. No pressure — just a conversation about what you need.</p>
+        <div class="contact-expect">
+          <h4>What to Expect</h4>
+          <ul>
+            <li>A response within 24–48 hours</li>
+            <li>A brief, no-pressure consultation call</li>
+            <li>A custom menu and pricing proposal tailored to your household</li>
+          </ul>
+        </div>
+        <div class="contact-details">
+          <p>📍 Raleigh, NC 27613</p>
+          <p>📸 <a href="https://www.instagram.com/maloufspantry" target="_blank" rel="noopener">@maloufspantry</a> on Instagram</p>
+          <p>Serving the greater Raleigh–Durham–Chapel Hill Triangle.</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="mailto:contact@maloufpersonalchef.com" method="post" enctype="text/plain" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(919) 000-0000" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Service Interest</label>
+              <select id="service" name="service">
+                <option value="">Select a service…</option>
+                <option>Weekly Meal Prep</option>
+                <option>Private Dining</option>
+                <option>Wellness Meal Plan</option>
+                <option>Special Event</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="household">Household Size</label>
+              <select id="household" name="household">
+                <option value="">Select size…</option>
+                <option>1–2 people</option>
+                <option>3–4 people</option>
+                <option>5–6 people</option>
+                <option>6+ people</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Dietary Restrictions or Notes</label>
+            <textarea id="notes" name="notes" placeholder="Any allergies, preferences, or goals we should know about?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit">Send My Inquiry</button>
+          <p class="form-privacy">Your information is kept completely private and will never be shared or sold.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────────────────────── -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo" style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="48" height="48" rx="3" fill="#B8954A" fill-opacity="0.2"/>
+            <text x="24" y="36" font-family="Georgia,serif" font-size="30" font-weight="400" text-anchor="middle" fill="#B8954A">M</text>
+          </svg>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:300;color:#fff;letter-spacing:0.04em;">Malouf Personal Chef</span>
+        </div>
+        <p class="footer-tagline">In-Home Culinary Services<br>Raleigh–Durham, NC</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#menus">Sample Menus</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About the Chef</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/maloufspantry" target="_blank" rel="noopener">Instagram · @maloufspantry</a>
+          <a href="https://www.facebook.com/profile.php?id=61574620721767" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 Malouf Personal Chef. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ─── JAVASCRIPT ───────────────────────────────────────── -->
+<script>
+  // Nav scroll behavior
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu
+  function openMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // FAQ: close others when one opens
+  document.querySelectorAll('details').forEach(detail => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) {
+        document.querySelectorAll('details').forEach(other => {
+          if (other !== detail) other.open = false;
+        });
+      }
+    });
+  });
+
+  // Scroll reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll polyfill for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
