@@ -183,6 +183,24 @@
       flex-shrink: 0;
     }
 
+    .nav-logo-img {
+      height: 52px;
+      width: auto;
+      display: block;
+      /* The logo has a light background — add a subtle drop shadow so it reads over the dark hero */
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,0.35));
+      transition: opacity 0.2s;
+    }
+    .nav-logo-img:hover { opacity: 0.88; }
+
+    .footer-logo-img {
+      height: 80px;
+      width: auto;
+      display: block;
+      /* Invert to white so it reads on the dark charcoal footer */
+      filter: brightness(0) invert(1) opacity(0.85);
+    }
+
     .nav-links {
       display: flex;
       gap: 36px;
@@ -1178,11 +1196,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <svg class="nav-logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="48" height="48" rx="3" fill="#B8954A" fill-opacity="0.15"/>
-          <text x="24" y="36" font-family="Georgia,serif" font-size="30" font-weight="400" text-anchor="middle" fill="#B8954A">M</text>
-        </svg>
-        <span class="nav-logo-text">Malouf Personal Chef</span>
+        <img src="logo.png" alt="Malouf Personal Chef" class="nav-logo-img" />
       </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
@@ -1363,7 +1377,7 @@
     <div class="section-header">
       <span class="eyebrow">Investment</span>
       <h2 class="section-headline">Personalized Service, Clearly Priced</h2>
-      <p class="section-sub">Every package includes menu planning, in-home preparation, and kitchen clean-up. Groceries are purchased separately at cost — you are never marked up on ingredients.</p>
+      <p class="section-sub">Every package includes menu planning, in-home preparation, and kitchen clean-up. Clients handle their own grocery shopping — or add Chef Malouf's shopping service for a flat fee. Either way, you are never marked up on ingredients.</p>
     </div>
 
     <div class="pricing-grid">
@@ -1372,7 +1386,7 @@
         <h3>The Couple</h3>
         <p class="pricing-subtitle">Personalized prep for two</p>
         <div class="pricing-price">$30</div>
-        <p class="pricing-freq">starting per session</p>
+        <p class="pricing-freq">starting per meal</p>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>Weekly meal prep for 2 people</li>
@@ -1390,7 +1404,7 @@
         <h3>The Household</h3>
         <p class="pricing-subtitle">The most requested package</p>
         <div class="pricing-price">$40</div>
-        <p class="pricing-freq">starting per session</p>
+        <p class="pricing-freq">starting per meal</p>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>Weekly meal prep for 4 portions</li>
@@ -1407,7 +1421,7 @@
         <h3>The Family</h3>
         <p class="pricing-subtitle">Built for a full household</p>
         <div class="pricing-price">$60</div>
-        <p class="pricing-freq">starting per session</p>
+        <p class="pricing-freq">starting per meal</p>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>Weekly meal prep for 6 portions</li>
@@ -1433,7 +1447,7 @@
       </table>
     </div>
 
-    <p class="pricing-footnote">Pricing reflects in-home preparation only. Grocery costs are billed separately at market rate — no markups, no surprises. Private event pricing varies by scope; please inquire directly.</p>
+    <p class="pricing-footnote">Pricing reflects in-home preparation only. Clients are responsible for groceries — Chef Malouf can shop on your behalf for a $40 flat fee, with groceries billed at market rate. No markups, ever. Private event pricing varies by scope; please inquire directly.</p>
     <p class="pricing-scarcity">Limited weekly availability to ensure a highly personalized experience for every client.</p>
     <div class="pricing-cta">
       <a href="#contact" class="btn-primary">Check Availability</a>
@@ -1519,7 +1533,7 @@
           How does the grocery shopping service work?
           <span class="faq-toggle">+</span>
         </summary>
-        <div class="faq-answer">You have two options: provide the ingredients yourself, or add our grocery shopping service ($40 flat fee). If we shop for you, groceries are billed at market cost — there are no markups on ingredients, ever.</div>
+        <div class="faq-answer">By default, clients provide their own groceries. If you'd prefer Chef Malouf to handle the shopping, that's available as an add-on for a $40 flat fee. Either way, groceries are billed at market cost — there are no markups on ingredients, ever.</div>
       </details>
 
       <details>
@@ -1653,12 +1667,8 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-logo" style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="48" height="48" rx="3" fill="#B8954A" fill-opacity="0.2"/>
-            <text x="24" y="36" font-family="Georgia,serif" font-size="30" font-weight="400" text-anchor="middle" fill="#B8954A">M</text>
-          </svg>
-          <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;font-weight:300;color:#fff;letter-spacing:0.04em;">Malouf Personal Chef</span>
+        <div class="footer-brand-logo" style="margin-bottom:12px;">
+          <img src="logo.png" alt="Malouf Personal Chef" class="footer-logo-img" />
         </div>
         <p class="footer-tagline">In-Home Culinary Services<br>Raleigh–Durham, NC</p>
       </div>
