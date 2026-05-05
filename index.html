@@ -1612,7 +1612,8 @@
       </div>
 
       <div class="contact-form">
-        <form action="mailto:contact@maloufpersonalchef.com" method="post" enctype="text/plain" novalidate>
+        <form id="inquiry-form" action="https://formspree.io/f/mgodyevz" method="POST">
+          <input type="hidden" name="_subject" value="New Inquiry — Chef Malouf" />
           <div class="form-row">
             <div class="form-group">
               <label for="name">Full Name</label>
@@ -1657,6 +1658,10 @@
           <button type="submit" class="btn-primary form-submit">Send My Inquiry</button>
           <p class="form-privacy">Your information is kept completely private and will never be shared or sold.</p>
         </form>
+        <div id="form-success" style="display:none;text-align:center;padding:40px 0;">
+          <p style="font-size:18px;font-weight:600;color:var(--charcoal);margin-bottom:8px;">Inquiry Received</p>
+          <p style="color:var(--stone);font-size:14px;">Chef Malouf will be in touch within 24 hours.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1736,6 +1741,34 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Smooth scroll polyfill for anchor links
+  // Formspree AJAX submission
+  const inquiryForm = document.getElementById('inquiry-form');
+  inquiryForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = inquiryForm.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(inquiryForm.action, {
+        method: 'POST',
+        body: new FormData(inquiryForm),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        inquiryForm.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send My Inquiry';
+        alert('Something went wrong. Please try again or email directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send My Inquiry';
+      alert('Something went wrong. Please try again or email directly.');
+    }
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const target = document.querySelector(anchor.getAttribute('href'));
